@@ -6,6 +6,7 @@ from pydantic import BaseModel
 file_path = "./list_of_produts"
 
 
+
 # List models
 models = ollama.list()
 
@@ -21,20 +22,19 @@ chat = ollama.chat(
                        }])
 
 
-print(type(chat))
-
+chat_dict = dict(chat)
+file_text = chat_dict["message"]["content"]
 """test = chat["message"]["content"]
 print(type(test))"""
 #chat(["message"]["content"])
 #print(chat["message"]["content"])
 #print(chat)
-"""
+
 with open(file=file_path, mode="w") as file:
     try: 
-        file.write(resposne)
+        file.write(file_text)
         file.close()
     except Exception as Error:
         print(Error)
         file.close()
 
-"""
